@@ -1,5 +1,4 @@
-=======
 my-vim
 ======
 
-My vim setting
+My vim setting. Modify from vgod's vim

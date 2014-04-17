@@ -3,7 +3,10 @@
 " Fork me on GITHUB  https://github.com/vgod/vimrc
 
 " read https://github.com/vgod/vimrc/blob/master/README.md for more info
+let g:clang_exec = '/usr/bin/clang'
+let g:clang_user_options = '2> NUL || exit 0"'""'
 
+let g:Powerline_symbols = 'fancy'
 
 " For pathogen.vim: auto load all plugins in .vim/bundle
 
@@ -18,14 +21,13 @@ call pathogen#helptags()
 " General Settings
 
 set nocompatible	" not compatible with the old-fashion vi mode
+set ts=4
 set bs=2		" allow backspacing over everything in insert mode
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set autoread		" auto read when file is changed from outside
+set nu
 
-
-filetype off          " necessary to make ftdetect work on Linux
-syntax on
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
@@ -75,8 +77,8 @@ set tm=500
 
 " TAB setting{
    set expandtab        "replace <TAB> with spaces
-   set softtabstop=3 
-   set shiftwidth=3 
+   set softtabstop=4 
+   set shiftwidth=4 
 
    au FileType Makefile set noexpandtab
 "}      							
@@ -301,6 +303,9 @@ if !has("gui_running")
    nmap OD h
 endif
 
+" --- Emmet-vim
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 
 
 " --- Command-T
@@ -317,11 +322,17 @@ let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade  Comment
 
+" --- NERDTree
+" with F5
+nnoremap <silent> <F5> :NERDTREE<CR> 
+
 
 " --- TagBar
 " toggle TagBar with F7
 nnoremap <silent> <F7> :TagbarToggle<CR> 
 " set focus to TagBar when opening it
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 let g:tagbar_autofocus = 1
 
 " --- PowerLine
